@@ -7,3 +7,4 @@ ml/artifacts/*.pkl
 .vscode/
 ml/data/*.csv
 
+ml/data/processed/*.csv
