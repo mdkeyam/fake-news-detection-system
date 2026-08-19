@@ -5,3 +5,5 @@ __pycache__/
 .env
 ml/artifacts/*.pkl
 .vscode/
+ml/*data
+
