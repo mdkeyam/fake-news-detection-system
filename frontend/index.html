@@ -1,114 +1,387 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+```
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
-    <title>Fake News Detection System</title>
+<meta
+    name="description"
+    content="AI-powered fake news detection using machine learning."
+>
 
-    <link
-        rel="stylesheet"
-        href="css/style.css"
-    >
+<title>Fake News Detection | AI Analysis</title>
+
+<link
+    rel="stylesheet"
+    href="css/style.css"
+>
+```
+
 </head>
 
 <body>
 
-    <main class="container">
+```
+<main class="container">
 
-        <section class="hero">
+    <!-- HEADER -->
+    <header class="hero">
 
-            <h1>Fake News Detection</h1>
+        <div class="hero-icon">📰</div>
 
-            <p>
-                Analyze a news headline or article using
-                an AI-based text classification model.
-            </p>
+        <span class="eyebrow">
+            AI-POWERED ANALYSIS
+        </span>
 
-        </section>
+        <h1>
+            Fake News Detection
+        </h1>
+
+        <p>
+            Analyze a news headline or article using
+            machine-learning based text classification.
+        </p>
+
+        <div class="api-status">
+            <span class="status-dot"></span>
+            Prediction system ready
+        </div>
+
+    </header>
 
 
-        <section class="card">
+    <!-- MAIN ANALYSIS CARD -->
+    <section class="card analysis-card">
 
-            <label for="newsText">
-                Enter News Text
-            </label>
+        <div class="section-heading">
 
-            <textarea
-                id="newsText"
-                placeholder="Enter a news headline or article text..."
-                maxlength="10000"
-            ></textarea>
+            <div>
 
-            <div class="input-info">
-                <span id="charCount">0 / 10000</span>
+                <h2>
+                    Analyze News
+                </h2>
+
+                <p>
+                    Paste a headline or news article below.
+                </p>
+
             </div>
 
+        </div>
+
+
+        <label for="newsText">
+            News Text
+        </label>
+
+        <textarea
+            id="newsText"
+            placeholder="Enter a news headline or paste a news article here..."
+            maxlength="10000"
+            spellcheck="true"
+        ></textarea>
+
+
+        <div class="input-info">
+
+            <span>
+                Maximum 10,000 characters
+            </span>
+
+            <span id="charCount">
+                0 / 10000
+            </span>
+
+        </div>
+
+
+        <!-- EXAMPLES -->
+        <div class="examples">
+
+            <span class="examples-title">
+                Try an example:
+            </span>
+
+            <button
+                type="button"
+                class="example-button"
+                data-example="Scientists discover a completely new planet made of gold."
+            >
+                Example 1
+            </button>
+
+            <button
+                type="button"
+                class="example-button"
+                data-example="The government announced a new public transportation project to improve connectivity."
+            >
+                Example 2
+            </button>
+
+        </div>
+
+
+        <!-- ACTIONS -->
+        <div class="actions">
 
             <button
                 id="analyzeButton"
+                class="primary-button"
                 type="button"
             >
-                Analyze News
+
+                <span id="analyzeIcon">
+                    🔍
+                </span>
+
+                <span id="analyzeText">
+                    Analyze News
+                </span>
+
             </button>
 
 
-            <div
-                id="errorMessage"
-                class="message error hidden"
-            ></div>
-
-
-            <div
-                id="loadingMessage"
-                class="message loading hidden"
+            <button
+                id="clearButton"
+                class="secondary-button"
+                type="button"
             >
+                Clear
+            </button>
+
+        </div>
+
+
+        <!-- ERROR -->
+        <div
+            id="errorMessage"
+            class="message error hidden"
+            role="alert"
+        ></div>
+
+
+        <!-- LOADING -->
+        <div
+            id="loadingMessage"
+            class="message loading hidden"
+        >
+
+            <span class="spinner"></span>
+
+            <span>
                 Analyzing news...
+            </span>
+
+        </div>
+
+
+        <!-- RESULT -->
+        <section
+            id="result"
+            class="result hidden"
+            aria-live="polite"
+        >
+<div class="result-header">
+    <div>
+        <span class="result-label">ANALYSIS RESULT</span>
+
+        <div class="result-title-row">
+            <span id="resultIcon">🔍</span>
+
+            <div>
+                <h2 id="prediction">-</h2>
+                <p id="resultTitle">News Analysis</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="resultBadge" class="result-badge">-</div>
+</div>
+
+            <!-- CONFIDENCE -->
+            <div class="confidence-section">
+
+                <div class="confidence-header">
+
+                    <span>
+                        Model Confidence
+                    </span>
+
+                    <strong id="confidence">
+                        0%
+                    </strong>
+
+                </div>
+
+
+                <div class="progress-track">
+
+                    <div
+                        id="confidenceBar"
+                        class="progress-bar"
+                        style="width: 0%"
+                    ></div>
+
+                </div>
+
             </div>
 
 
-            <section
-                id="result"
-                class="result hidden"
-            >
+            <!-- RESULT DETAILS -->
+            <div class="result-details">
 
-                <h2>Analysis Result</h2>
+                <div class="detail-item">
 
-                <div class="result-row">
-                    <span>Prediction</span>
-                    <strong id="prediction"></strong>
+                    <span class="detail-label">
+                        Confidence Level
+                    </span>
+
+                    <strong id="confidenceLevel">
+                        -
+                    </strong>
+
                 </div>
 
-                <div class="result-row">
-                    <span>Model Confidence</span>
-                    <strong id="confidence"></strong>
+
+                <div class="detail-item">
+
+                    <span class="detail-label">
+                        Classification
+                    </span>
+
+                    <strong id="classification">
+                        -
+                    </strong>
+
                 </div>
 
-                <div class="result-row">
-                    <span>Confidence Level</span>
-                    <strong id="confidenceLevel"></strong>
-                </div>
-
-            </section>
-
-
-            <div class="disclaimer">
-                <strong>Important:</strong>
-                This is an AI-based prediction based on
-                textual patterns. It should not be treated
-                as absolute truth or factual verification.
             </div>
 
         </section>
 
-    </main>
+    </section>
 
 
-    <script src="js/app.js"></script>
+    <!-- MODEL INFORMATION -->
+    <section class="info-grid">
+
+        <div class="info-card">
+
+            <span class="info-icon">
+                🤖
+            </span>
+
+            <div>
+
+                <h3>
+                    Machine Learning
+                </h3>
+
+                <p>
+                    Logistic Regression
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <span class="info-icon">
+                📊
+            </span>
+
+            <div>
+
+                <h3>
+                    Text Features
+                </h3>
+
+                <p>
+                    TF-IDF Vectorization
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <span class="info-icon">
+                ⚡
+            </span>
+
+            <div>
+
+                <h3>
+                    Prediction
+                </h3>
+
+                <p>
+                    Real-time API analysis
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- DISCLAIMER -->
+    <section class="disclaimer">
+
+        <span class="disclaimer-icon">
+            ⚠️
+        </span>
+
+        <div>
+
+            <strong>
+                Important Notice
+            </strong>
+
+            <p id="resultDisclaimer">
+                This system provides an AI-based prediction
+                based on textual patterns learned from training
+                data. It should not be treated as absolute
+                truth or as a replacement for factual
+                verification.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        Fake News Detection System
+
+        <span>
+            •
+        </span>
+
+        AI-based text classification
+
+    </footer>
+
+</main>
+
+
+<script src="js/app.js"></script>
+
 
 </body>
+
 </html>

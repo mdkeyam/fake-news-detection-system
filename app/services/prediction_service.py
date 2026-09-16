@@ -1,6 +1,5 @@
-from pathlib import Path
-
 import joblib
+from pathlib import Path
 
 
 BASE_DIR = Path(__file__).resolve().parents[2]
@@ -8,15 +7,15 @@ BASE_DIR = Path(__file__).resolve().parents[2]
 MODEL_FILE = (
     BASE_DIR
     / "ml"
-    / "artifacts"
-    / "fake_news_model.pkl"
+    / "models"
+    / "fake_news_model_v2.pkl"
 )
 
 VECTORIZER_FILE = (
     BASE_DIR
     / "ml"
-    / "artifacts"
-    / "tfidf_vectorizer.pkl"
+    / "models"
+    / "tfidf_vectorizer_v2.pkl"
 )
 
 
