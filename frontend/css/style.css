@@ -811,3 +811,155 @@ footer span {
         min-height: 170px;
     }
 }
+/* ============================================================
+   FINAL UI POLISH
+   ============================================================ */
+
+/* Better focus accessibility */
+button:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid rgba(37, 99, 235, 0.25);
+    outline-offset: 2px;
+}
+
+
+/* Character counter warnings */
+.input-info #charCount.warning {
+    color: #b54708;
+    font-weight: 700;
+}
+
+.input-info #charCount.danger {
+    color: #b42318;
+    font-weight: 800;
+}
+
+
+/* Better disabled buttons */
+.primary-button:disabled,
+.secondary-button:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+
+/* Fake result */
+.result.fake {
+    border-color: #fecdca;
+    background: #fff8f7;
+}
+
+.result.fake .result-badge {
+    background: #fee4e2;
+    color: #b42318;
+}
+
+.result.fake .progress-bar {
+    background: #d92d20;
+}
+
+
+/* Genuine result */
+.result.genuine {
+    border-color: #abefc6;
+    background: #f6fef9;
+}
+
+.result.genuine .result-badge {
+    background: #dcfae6;
+    color: #027a48;
+}
+
+.result.genuine .progress-bar {
+    background: #12b76a;
+}
+
+
+/* Result icon */
+#resultIcon {
+    display: grid;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #eef2f6;
+    font-size: 23px;
+    line-height: 1;
+}
+
+.result.fake #resultIcon {
+    background: #fee4e2;
+}
+
+.result.genuine #resultIcon {
+    background: #dcfae6;
+}
+
+
+/* Result animation */
+.result.fake,
+.result.genuine {
+    animation:
+        resultIn 0.25s ease,
+        resultGlow 0.6s ease;
+}
+
+@keyframes resultGlow {
+    0% {
+        transform: translateY(6px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+
+/* Better textarea interaction */
+textarea:hover {
+    border-color: #b8c3d1;
+}
+
+
+/* Smooth confidence bar */
+.progress-bar {
+    min-width: 0;
+    transition:
+        width 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+        background 0.25s ease;
+}
+
+
+/* Loading button */
+.primary-button[aria-busy="true"] {
+    cursor: wait;
+}
+
+
+/* Mobile result icon */
+@media (max-width: 520px) {
+    #resultIcon {
+        width: 42px;
+        height: 42px;
+        font-size: 21px;
+    }
+}
+
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .result,
+    .result.fake,
+    .result.genuine {
+        animation: none;
+    }
+
+    .progress-bar {
+        transition: none;
+    }
+}
