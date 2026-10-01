@@ -1,4 +1,4 @@
-# 🤖 Fake News Detection System
+# 🤖 AI Fake News Detection System
 
 A machine-learning-based web application that analyzes news text and classifies it as **Likely Fake** or **Likely Genuine**.
 
